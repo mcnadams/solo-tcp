@@ -8,6 +8,10 @@ const rl = readline.createInterface({
 });
 
 rl.prompt();
+rl.on('line', line => {
+    console.log(line);
+    rl.prompt();
+});
 
 // const client = net.createConnection(12345, 'localhost', () => {
 //     console.log('I am connected');
