@@ -10,6 +10,9 @@ const server = net.createServer(connectedClient => {
             client.write(`From server: ${data}`);
         });
     });
+    connectedClient.on('end', () => {
+        console.log('client disconnected');
+    });
 });
 
 server.listen(12345);
