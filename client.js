@@ -20,3 +20,8 @@ clientOfServer.on('data', data => {
     console.log(data.toString());
     rl.prompt();
 });
+
+clientOfServer.on('end', () => {
+    console.log('server disconnected');
+    process.exit();
+});
