@@ -1,9 +1,10 @@
 const net = require('net');
 
-const server = net.createServer(client => {
+const server = net.createServer(connectedClient => {
     console.log('client connected!');
-    client.on('data', data => {
+    connectedClient.on('data', data => {
         console.log(data.toString());
+        connectedClient.write(data);
     });
 });
 

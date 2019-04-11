@@ -7,13 +7,16 @@ const rl = readline.createInterface({
     prompt: '> '
 });
 
-rl.prompt();
-rl.on('line', line => {
-    console.log(line);
+const clientOfServer = net.createConnection(12345, 'localhost', () => {
+    console.log('I am connected');
     rl.prompt();
+    rl.on('line', line => {
+        clientOfServer.write(line);
+        rl.prompt();
+    });
 });
 
-// const client = net.createConnection(12345, 'localhost', () => {
-//     console.log('I am connected');
-//     client.write('hello I am a client');
-// });
+clientOfServer.on('data', data => {
+    console.log('FROM SERVER:', data.toString());
+    rl.prompt();
+});
