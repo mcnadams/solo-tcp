@@ -7,7 +7,7 @@ const server = net.createServer(connectedClient => {
     connectedClient.on('data', data => {
         console.log(data.toString());
         allClients.forEach(client => {
-            client.write(data);
+            client.write(`From server: ${data}`);
         });
     });
 });

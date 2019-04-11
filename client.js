@@ -17,6 +17,6 @@ const clientOfServer = net.createConnection(12345, 'localhost', () => {
 });
 
 clientOfServer.on('data', data => {
-    console.log('FROM SERVER:', data.toString());
+    console.log(data.toString());
     rl.prompt();
 });
